@@ -1,0 +1,28 @@
+# Arquivos de compilação
+bin/
+obj/
+
+# Ignorar a pasta SecurityBanco e todos os arquivos dentro dela
+SecurityBanco/
+
+# Arquivos temporários
+.vs/
+*.user
+*.suo
+
+# Arquivos de configuração de ambiente
+appsettings.json
+
+# Logs e arquivos temporários de depuração
+*.log
+*.vspscc
+*.pidb
+
+# Arquivos de dependência gerados pelo NuGet
+packages/
+*.nupkg
+*.paket.*
+
+# Arquivos de saída de build
+*.dll
+*.exe
