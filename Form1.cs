@@ -23,10 +23,10 @@ namespace WinFormsAppEstudos
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
 
-            listView1.Columns.Add("Nome", 50, HorizontalAlignment.Left);
-            listView1.Columns.Add("Código", 50, HorizontalAlignment.Left);
-            listView1.Columns.Add("Descrição", 50, HorizontalAlignment.Left);
-            listView1.Columns.Add("Preço", 50, HorizontalAlignment.Left);
+            listView1.Columns.Add("Código", 60, HorizontalAlignment.Left);
+            listView1.Columns.Add("Nome", 150, HorizontalAlignment.Left);
+            listView1.Columns.Add("Descrição", 150, HorizontalAlignment.Left);
+            listView1.Columns.Add("Preço", 80, HorizontalAlignment.Left);
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -61,7 +61,10 @@ namespace WinFormsAppEstudos
 
                 MessageBox.Show("Produto cadastrado com sucesso");
 
-
+                textBox2.Clear();
+                textBox1.Clear();
+                textBox3.Clear();
+                textBox4.Clear();
             }
             catch (Exception ex)
             {
@@ -112,10 +115,6 @@ namespace WinFormsAppEstudos
 
                     listView1.Items.Add(linha_listView);
                 }
-
-                MessageBox.Show("Produto cadastrado com sucesso");
-
-
             }
             catch (Exception ex)
             {

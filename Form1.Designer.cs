@@ -143,14 +143,14 @@
             // 
             textBox5.Location = new Point(489, 71);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(219, 27);
+            textBox5.Size = new Size(286, 27);
             textBox5.TabIndex = 11;
             // 
             // button2
             // 
-            button2.Location = new Point(723, 71);
+            button2.Location = new Point(800, 71);
             button2.Name = "button2";
-            button2.Size = new Size(101, 27);
+            button2.Size = new Size(152, 27);
             button2.TabIndex = 12;
             button2.Text = "Buscar";
             button2.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             // 
             listView1.Location = new Point(489, 128);
             listView1.Name = "listView1";
-            listView1.Size = new Size(335, 121);
+            listView1.Size = new Size(463, 121);
             listView1.TabIndex = 13;
             listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -168,7 +168,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(836, 346);
+            ClientSize = new Size(1005, 346);
             Controls.Add(listView1);
             Controls.Add(button2);
             Controls.Add(textBox5);
