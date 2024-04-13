@@ -59,7 +59,7 @@ namespace WinFormsAppEstudos
 
                 comando.ExecuteReader();
 
-                MessageBox.Show("Produto cadastrado com sucesso");
+                MessageBox.Show("Produto cadastrado com sucesso!");
 
                 textBox2.Clear();
                 textBox1.Clear();
