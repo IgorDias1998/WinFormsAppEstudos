@@ -10,6 +10,8 @@ namespace WinFormsAppEstudos
         MySqlConnection Conexao;
         private string data_source;
 
+        private int? codigoProduto = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -50,21 +52,55 @@ namespace WinFormsAppEstudos
             {
                 Conexao = new MySqlConnection(data_source);
 
-                string sql = "INSERT INTO Produto (pro_codigo, pro_nome, pro_descricao, pro_preco)" +
-                    "VALUES('" + textBox2.Text + "', '" + textBox1.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
-
-                MySqlCommand comando = new MySqlCommand(sql, Conexao);
-
                 Conexao.Open();
 
-                comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand();
 
-                MessageBox.Show("Produto cadastrado com sucesso!");
+                comando.Connection = Conexao;
 
-                textBox2.Clear();
-                textBox1.Clear();
-                textBox3.Clear();
-                textBox4.Clear();
+                if(codigoProduto == null)
+                {
+                    comando.CommandText = "INSERT INTO Produto (pro_codigo, pro_nome,  pro_descricao, pro_preco) " +
+                      "VALUES " +
+                      "(@pro_codigo, @pro_nome,  @pro_descricao, @pro_preco) ";
+
+                    comando.Parameters.AddWithValue("@pro_codigo", textBox2.Text);
+                    comando.Parameters.AddWithValue("@pro_nome", textBox1.Text);
+                    comando.Parameters.AddWithValue("@pro_descricao", textBox3.Text);
+                    comando.Parameters.AddWithValue("@pro_preco", textBox4.Text);
+
+                    comando.Prepare();
+
+                    comando.ExecuteNonQuery();
+
+                    MessageBox.Show("Produto cadastrado com sucesso!");
+
+                    textBox2.Clear();
+                    textBox1.Clear();
+                    textBox3.Clear();
+                    textBox4.Clear();
+                } else
+                {
+                    //Atualização de contato
+                    comando.CommandText = "UPDATE Produto SET pro_codigo=@pro_codigo, pro_nome=@pro_nome, pro_descricao=@pro_descricao, pro_preco=@pro_preco " +
+                      "WHERE pro_codigo=@pro_codigo";
+
+                    comando.Parameters.AddWithValue("@pro_codigo", textBox2.Text);
+                    comando.Parameters.AddWithValue("@pro_nome", textBox1.Text);
+                    comando.Parameters.AddWithValue("@pro_descricao", textBox3.Text);
+                    comando.Parameters.AddWithValue("@pro_preco", textBox4.Text);
+
+                    comando.Prepare();
+
+                    comando.ExecuteNonQuery();
+
+                    MessageBox.Show("Produto atualizado com sucesso!");
+
+                    textBox2.Clear();
+                    textBox1.Clear();
+                    textBox3.Clear();
+                    textBox4.Clear();
+                }
             }
             catch (Exception ex)
             {
@@ -85,29 +121,33 @@ namespace WinFormsAppEstudos
         {
             try
             {
-                string q = "'%" + textBox5.Text + "%'";
-
                 Conexao = new MySqlConnection(data_source);
-
-                string sql = "SELECT * " +
-                            "FROM Produto " +
-                            "WHERE pro_nome LIKE " + q;
 
                 Conexao.Open();
 
-                MySqlCommand comando = new MySqlCommand(sql, Conexao);
+                MySqlCommand comando = new MySqlCommand();
+
+                comando.Connection = Conexao;
+
+                comando.CommandText = "SELECT * " +
+                                        "FROM Produto " +
+                                        "WHERE pro_nome LIKE @pro_nome ";
+
+                comando.Parameters.AddWithValue("@pro_nome", "%" + textBox5.Text + "%");
+
+                comando.Prepare();
 
                 MySqlDataReader reader = comando.ExecuteReader();
-                
+
                 listView1.Items.Clear();
 
-                while(reader.Read())
+                while (reader.Read())
                 {
                     string[] row =
                     {
                         reader.GetInt32(0).ToString(),
-                        reader.GetString(1), 
-                        reader.GetString(2), 
+                        reader.GetString(1),
+                        reader.GetString(2),
                         reader.GetDouble(3).ToString()
                     };
 
@@ -123,6 +163,26 @@ namespace WinFormsAppEstudos
             finally
             {
                 Conexao.Close();
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            ListView.SelectedListViewItemCollection itensSelecionados = listView1.SelectedItems;
+
+            foreach(ListViewItem item in itensSelecionados)
+            {
+                codigoProduto = Convert.ToInt32(item.SubItems[0].Text);
+
+                textBox1.Text = item.SubItems[1].Text;
+                textBox2.Text = item.SubItems[0].Text;
+                textBox3.Text = item.SubItems[2].Text;
+                textBox4.Text = item.SubItems[3].Text;
             }
         }
     }

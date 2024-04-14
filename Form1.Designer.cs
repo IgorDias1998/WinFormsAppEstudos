@@ -76,6 +76,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(138, 27);
             textBox2.TabIndex = 3;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label3
             // 
@@ -159,10 +160,12 @@
             // listView1
             // 
             listView1.Location = new Point(489, 128);
+            listView1.MultiSelect = false;
             listView1.Name = "listView1";
-            listView1.Size = new Size(463, 121);
+            listView1.Size = new Size(463, 206);
             listView1.TabIndex = 13;
             listView1.UseCompatibleStateImageBehavior = false;
+            listView1.ItemSelectionChanged += listView1_ItemSelectionChanged;
             // 
             // Form1
             // 
