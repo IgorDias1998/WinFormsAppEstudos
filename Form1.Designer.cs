@@ -44,15 +44,15 @@
             button2 = new Button();
             listView1 = new ListView();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
-            menuStrip1.SuspendLayout();
+            buttonExcluir = new Button();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(11, 45);
+            label1.Location = new Point(11, 14);
             label1.Name = "label1";
             label1.Size = new Size(63, 19);
             label1.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(11, 68);
+            textBox1.Location = new Point(11, 37);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(259, 26);
             textBox1.TabIndex = 1;
@@ -69,7 +69,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(341, 45);
+            label2.Location = new Point(341, 14);
             label2.Name = "label2";
             label2.Size = new Size(137, 19);
             label2.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(341, 68);
+            textBox2.Location = new Point(341, 37);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(155, 26);
             textBox2.TabIndex = 3;
@@ -86,7 +86,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(11, 121);
+            label3.Location = new Point(11, 90);
             label3.Name = "label3";
             label3.Size = new Size(78, 19);
             label3.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(11, 144);
+            textBox3.Location = new Point(11, 113);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(484, 26);
             textBox3.TabIndex = 5;
@@ -103,7 +103,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(56, 199);
+            label4.Location = new Point(56, 168);
             label4.Name = "label4";
             label4.Size = new Size(47, 19);
             label4.TabIndex = 6;
@@ -111,7 +111,7 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(56, 221);
+            textBox4.Location = new Point(56, 190);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(140, 26);
             textBox4.TabIndex = 7;
@@ -119,7 +119,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(22, 228);
+            label5.Location = new Point(22, 197);
             label5.Name = "label5";
             label5.Size = new Size(28, 19);
             label5.TabIndex = 8;
@@ -131,7 +131,7 @@
             button1.BackColor = Color.SteelBlue;
             button1.Cursor = Cursors.Hand;
             button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(325, 213);
+            button1.Location = new Point(325, 182);
             button1.Name = "button1";
             button1.Size = new Size(171, 34);
             button1.TabIndex = 9;
@@ -143,7 +143,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(550, 54);
+            label6.Location = new Point(550, 23);
             label6.Name = "label6";
             label6.Size = new Size(114, 19);
             label6.TabIndex = 10;
@@ -151,7 +151,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(550, 76);
+            textBox5.Location = new Point(550, 45);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(321, 26);
             textBox5.TabIndex = 11;
@@ -161,7 +161,7 @@
             button2.BackColor = Color.SteelBlue;
             button2.Cursor = Cursors.Hand;
             button2.ForeColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(900, 68);
+            button2.Location = new Point(900, 37);
             button2.Name = "button2";
             button2.Size = new Size(171, 34);
             button2.TabIndex = 12;
@@ -171,7 +171,8 @@
             // 
             // listView1
             // 
-            listView1.Location = new Point(550, 121);
+            listView1.ContextMenuStrip = contextMenuStrip1;
+            listView1.Location = new Point(551, 90);
             listView1.MultiSelect = false;
             listView1.Name = "listView1";
             listView1.Size = new Size(520, 196);
@@ -182,32 +183,39 @@
             // contextMenuStrip1
             // 
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(61, 4);
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1131, 28);
-            menuStrip1.TabIndex = 14;
-            menuStrip1.Text = "menuStrip1";
+            contextMenuStrip1.Size = new Size(149, 28);
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(156, 24);
-            toolStripMenuItem1.Text = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(148, 24);
+            toolStripMenuItem1.Text = "Exluir item";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
+            // 
+            // buttonExcluir
+            // 
+            buttonExcluir.BackColor = Color.Red;
+            buttonExcluir.Cursor = Cursors.Hand;
+            buttonExcluir.Font = new Font("Book Antiqua", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonExcluir.ForeColor = SystemColors.ControlLightLight;
+            buttonExcluir.Location = new Point(900, 296);
+            buttonExcluir.Name = "buttonExcluir";
+            buttonExcluir.Size = new Size(171, 34);
+            buttonExcluir.TabIndex = 14;
+            buttonExcluir.Text = "Excluir item";
+            buttonExcluir.UseVisualStyleBackColor = false;
+            buttonExcluir.Visible = false;
+            buttonExcluir.Click += buttonExcluir_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
-            ClientSize = new Size(1131, 328);
-            Controls.Add(menuStrip1);
+            ClientSize = new Size(1131, 342);
+            Controls.Add(buttonExcluir);
             Controls.Add(listView1);
             Controls.Add(button2);
             Controls.Add(textBox5);
@@ -223,12 +231,10 @@
             Controls.Add(textBox1);
             Controls.Add(label1);
             Font = new Font("Book Antiqua", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Sistema";
             Load += Form1_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -250,7 +256,7 @@
         private Button button2;
         private ListView listView1;
         private ContextMenuStrip contextMenuStrip1;
-        private MenuStrip menuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
+        private Button buttonExcluir;
     }
 }

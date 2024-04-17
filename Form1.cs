@@ -58,7 +58,7 @@ namespace WinFormsAppEstudos
 
                 comando.Connection = Conexao;
 
-                if(codigoProduto == null)
+                if (codigoProduto == null)
                 {
                     comando.CommandText = "INSERT INTO Produto (pro_codigo, pro_nome,  pro_descricao, pro_preco) " +
                       "VALUES " +
@@ -75,11 +75,9 @@ namespace WinFormsAppEstudos
 
                     MessageBox.Show("Produto cadastrado com sucesso!");
 
-                    textBox2.Clear();
-                    textBox1.Clear();
-                    textBox3.Clear();
-                    textBox4.Clear();
-                } else
+                    limparCampos();
+                }
+                else
                 {
                     //Atualização de contato
                     comando.CommandText = "UPDATE Produto SET pro_codigo=@pro_codigo, pro_nome=@pro_nome, pro_descricao=@pro_descricao, pro_preco=@pro_preco " +
@@ -96,10 +94,7 @@ namespace WinFormsAppEstudos
 
                     MessageBox.Show("Produto atualizado com sucesso!");
 
-                    textBox2.Clear();
-                    textBox1.Clear();
-                    textBox3.Clear();
-                    textBox4.Clear();
+                    limparCampos();
                 }
             }
             catch (Exception ex)
@@ -175,7 +170,7 @@ namespace WinFormsAppEstudos
         {
             ListView.SelectedListViewItemCollection itensSelecionados = listView1.SelectedItems;
 
-            foreach(ListViewItem item in itensSelecionados)
+            foreach (ListViewItem item in itensSelecionados)
             {
                 codigoProduto = Convert.ToInt32(item.SubItems[0].Text);
 
@@ -183,6 +178,82 @@ namespace WinFormsAppEstudos
                 textBox2.Text = item.SubItems[0].Text;
                 textBox3.Text = item.SubItems[2].Text;
                 textBox4.Text = item.SubItems[3].Text;
+
+                buttonExcluir.Visible = true;
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            excluirItem();
+        }
+
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+            excluirItem();
+        }
+
+        private void limparCampos()
+        {
+            textBox2.Clear();
+            textBox1.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+        }
+
+        private void excluirItem()
+        {
+            try
+            {
+
+                DialogResult conf = MessageBox.Show("Deseja realmente excluir este registro?",
+                                "Tem certeza?",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Warning);
+
+                if (conf == DialogResult.Yes)
+                {
+                    //Exluir no banco de dados
+                    Conexao = new MySqlConnection(data_source);
+
+                    Conexao.Open();
+
+                    MySqlCommand comando = new MySqlCommand();
+
+                    comando.Connection = Conexao;
+
+                    comando.CommandText = "DELETE FROM produto WHERE pro_codigo=@pro_codigo";
+
+                    comando.Parameters.AddWithValue("@pro_codigo", codigoProduto);
+
+                    comando.Prepare();
+
+                    comando.ExecuteNonQuery();
+
+                    MessageBox.Show("Item excluído com sucesso!",
+                                    "Sucesso!", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+
+                    buttonExcluir.Visible = false;
+
+                    limparCampos();
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro: " + ex.Number + "ocorreu " + ex.Message,
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu: " + ex.Message,
+                            "Erro", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Conexao.Close();
             }
         }
     }
