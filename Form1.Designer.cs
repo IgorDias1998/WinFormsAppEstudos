@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             label1 = new Label();
-            textBox1 = new TextBox();
+            textBoxNome = new TextBox();
             label2 = new Label();
             textBox2 = new TextBox();
             label3 = new Label();
@@ -58,13 +58,13 @@
             label1.TabIndex = 0;
             label1.Text = "Produto";
             // 
-            // textBox1
+            // textBoxNome
             // 
-            textBox1.Location = new Point(11, 37);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 26);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
+            textBoxNome.Location = new Point(11, 37);
+            textBoxNome.Name = "textBoxNome";
+            textBoxNome.Size = new Size(259, 26);
+            textBoxNome.TabIndex = 1;
+            textBoxNome.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
@@ -228,7 +228,7 @@
             Controls.Add(label3);
             Controls.Add(textBox2);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxNome);
             Controls.Add(label1);
             Font = new Font("Book Antiqua", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Name = "Form1";
@@ -242,7 +242,7 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox textBoxNome;
         private Label label2;
         private TextBox textBox2;
         private Label label3;

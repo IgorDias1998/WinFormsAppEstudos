@@ -65,7 +65,7 @@ namespace WinFormsAppEstudos
                       "(@pro_codigo, @pro_nome,  @pro_descricao, @pro_preco) ";
 
                     comando.Parameters.AddWithValue("@pro_codigo", textBox2.Text);
-                    comando.Parameters.AddWithValue("@pro_nome", textBox1.Text);
+                    comando.Parameters.AddWithValue("@pro_nome", textBoxNome.Text);
                     comando.Parameters.AddWithValue("@pro_descricao", textBox3.Text);
                     comando.Parameters.AddWithValue("@pro_preco", textBox4.Text);
 
@@ -84,7 +84,7 @@ namespace WinFormsAppEstudos
                       "WHERE pro_codigo=@pro_codigo";
 
                     comando.Parameters.AddWithValue("@pro_codigo", textBox2.Text);
-                    comando.Parameters.AddWithValue("@pro_nome", textBox1.Text);
+                    comando.Parameters.AddWithValue("@pro_nome", textBoxNome.Text);
                     comando.Parameters.AddWithValue("@pro_descricao", textBox3.Text);
                     comando.Parameters.AddWithValue("@pro_preco", textBox4.Text);
 
@@ -174,7 +174,7 @@ namespace WinFormsAppEstudos
             {
                 codigoProduto = Convert.ToInt32(item.SubItems[0].Text);
 
-                textBox1.Text = item.SubItems[1].Text;
+                textBoxNome.Text = item.SubItems[1].Text;
                 textBox2.Text = item.SubItems[0].Text;
                 textBox3.Text = item.SubItems[2].Text;
                 textBox4.Text = item.SubItems[3].Text;
@@ -196,7 +196,7 @@ namespace WinFormsAppEstudos
         private void limparCampos()
         {
             textBox2.Clear();
-            textBox1.Clear();
+            textBoxNome.Clear();
             textBox3.Clear();
             textBox4.Clear();
         }
