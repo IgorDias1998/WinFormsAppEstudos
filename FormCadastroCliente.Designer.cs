@@ -31,7 +31,7 @@
             labelNomeCliente = new Label();
             textBoxNomeCliente = new TextBox();
             labelEndereco = new Label();
-            textBox1 = new TextBox();
+            textBoxEndereco = new TextBox();
             labelTelefone = new Label();
             textBoxTelefone = new TextBox();
             buttonSalvarCliente = new Button();
@@ -58,6 +58,7 @@
             textBoxNomeCliente.Name = "textBoxNomeCliente";
             textBoxNomeCliente.Size = new Size(311, 26);
             textBoxNomeCliente.TabIndex = 1;
+            textBoxNomeCliente.TextChanged += textBoxNomeCliente_TextChanged;
             // 
             // labelEndereco
             // 
@@ -68,12 +69,13 @@
             labelEndereco.TabIndex = 2;
             labelEndereco.Text = "Endereço";
             // 
-            // textBox1
+            // textBoxEndereco
             // 
-            textBox1.Location = new Point(12, 117);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(311, 26);
-            textBox1.TabIndex = 3;
+            textBoxEndereco.Location = new Point(12, 117);
+            textBoxEndereco.Name = "textBoxEndereco";
+            textBoxEndereco.Size = new Size(311, 26);
+            textBoxEndereco.TabIndex = 3;
+            textBoxEndereco.TextChanged += textBox1_TextChanged;
             // 
             // labelTelefone
             // 
@@ -90,6 +92,7 @@
             textBoxTelefone.Name = "textBoxTelefone";
             textBoxTelefone.Size = new Size(311, 26);
             textBoxTelefone.TabIndex = 5;
+            textBoxTelefone.TextChanged += textBoxTelefone_TextChanged;
             // 
             // buttonSalvarCliente
             // 
@@ -101,6 +104,7 @@
             buttonSalvarCliente.TabIndex = 12;
             buttonSalvarCliente.Text = "Salvar cliente";
             buttonSalvarCliente.UseVisualStyleBackColor = false;
+            buttonSalvarCliente.Click += buttonSalvarCliente_Click;
             // 
             // labelBuscarCliente
             // 
@@ -164,7 +168,7 @@
             Controls.Add(buttonSalvarCliente);
             Controls.Add(textBoxTelefone);
             Controls.Add(labelTelefone);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxEndereco);
             Controls.Add(labelEndereco);
             Controls.Add(textBoxNomeCliente);
             Controls.Add(labelNomeCliente);
@@ -180,7 +184,7 @@
         private Label labelNomeCliente;
         private TextBox textBoxNomeCliente;
         private Label labelEndereco;
-        private TextBox textBox1;
+        private TextBox textBoxEndereco;
         private Label labelTelefone;
         private TextBox textBoxTelefone;
         private Button buttonSalvarCliente;
