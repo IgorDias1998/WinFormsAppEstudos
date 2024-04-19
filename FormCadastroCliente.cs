@@ -16,5 +16,10 @@ namespace WinFormsAppEstudos
         {
             InitializeComponent();
         }
+
+        private void labelCadastroCliente_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
